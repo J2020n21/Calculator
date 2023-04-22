@@ -24,6 +24,18 @@ res.send("The results of the calculation is: " + result);
 
 });
 
+app.get("/bmi",function(req,res){
+    res.sendFile(__dirname+"/bmiCalculator.html");
+});
+
+app.post("/bmi",function(req,res){
+    var weight = parseFloat(req.body.weight);
+    var height = parseFloat(req.body.height);
+    var result = weight / (height*height);
+    //console.log(req.body); //check
+    res.send("Your BMI is: " + result);
+});
+
 //req.body: parsed version of the HTTP request
     //console.log(req.body); //form of text.
     //console.log(req.body.num1); //html name=num1
